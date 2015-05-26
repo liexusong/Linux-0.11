@@ -1,4 +1,6 @@
-	.code16
+
+	.code16    # 表明运行在16位代码下
+
 # rewrite with AT&T syntax by falcon <wuzhangjin@gmail.com> at 081012
 #
 # SYS_SIZE is the number of clicks (16 bytes) to be loaded.
@@ -33,11 +35,11 @@
 	begbss:
 	.text
 
-	.equ SETUPLEN, 4		# nr of setup-sectors
-	.equ BOOTSEG, 0x07c0		# original address of boot-sector
-	.equ INITSEG, 0x9000		# we move boot here - out of the way
-	.equ SETUPSEG, 0x9020		# setup starts here
-	.equ SYSSEG, 0x1000		# system loaded at 0x10000 (65536).
+	.equ SETUPLEN, 4				# nr of setup-sectors                        (setup所占的扇区数量)
+	.equ BOOTSEG, 0x07c0			# original address of boot-sector            (bootsect被加载到的内存地址)
+	.equ INITSEG, 0x9000			# we move boot here - out of the way         (bootsect会被移动到的内存地址)
+	.equ SETUPSEG, 0x9020			# setup starts here                          (setup被加载到的内存地址)
+	.equ SYSSEG, 0x1000				# system loaded at 0x10000 (65536).          (内核被加载的内存地址)
 	.equ ENDSEG, SYSSEG + SYSSIZE	# where to stop loading
 
 # ROOT_DEV:	0x000 - same type of floppy as boot.
